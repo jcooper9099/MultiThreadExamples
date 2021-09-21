@@ -50,6 +50,9 @@ namespace ThreadingExperiments
                 case 4:
                     new ThreadWithParamsExample().Run();
                     break;
+                case 5:
+                    new AysncRefExample().Run();
+                    break;
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\r\nInvalid  Example selection");
@@ -61,6 +64,7 @@ namespace ThreadingExperiments
         {
             Console.ForegroundColor = ConsoleColor.White;
 
+            Console.WriteLine(Environment.NewLine);
             Console.WriteLine("Welcome to multi-threading examples by JB Cooper.\r\n");
             Console.WriteLine("\r\nPlease choose a number to see an example of multi-threading and how it improves performance.");
             Console.WriteLine("\r\nEach example will run a task 60 times using different strategies, each taking 1 second.\r\nBecause of multi threading you will see that performance is greatly improved.\r\n");
@@ -69,6 +73,7 @@ namespace ThreadingExperiments
             Console.WriteLine("2 - Tasks with parameters example");
             Console.WriteLine("3 - ThreadPool Example");
             Console.WriteLine("4 - Threads with parameters example");
+            Console.WriteLine("5 - Async Tasks example");
             Console.WriteLine(Environment.NewLine);
             Console.WriteLine("Press X to exit this program");
             Console.WriteLine(Environment.NewLine);

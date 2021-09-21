@@ -32,15 +32,9 @@ namespace ThreadingExperiments.Examples
 
             Task.WaitAll(taskList.ToArray());
 
-            sw.Stop();
+            sw.Stop();           
 
-            Console.WriteLine("----------------"); // A separator for UI
-
-            RefList.OrderBy(x => x).ToList().ForEach((x) => Console.WriteLine($"{x} was found in the reference list"));
-
-            var elapsedSeconds = sw.ElapsedMilliseconds / 1000;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"All threads finished, {elapsedSeconds} seconds elapsed. A reduction to 1/{60 / elapsedSeconds} of the time.");
+            RunCheck(sw.ElapsedMilliseconds);
 
             return 0;
         }

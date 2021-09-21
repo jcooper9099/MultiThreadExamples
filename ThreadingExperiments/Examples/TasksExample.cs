@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Linq;
 
 namespace ThreadingExperiments.Examples
 {
@@ -35,15 +34,10 @@ namespace ThreadingExperiments.Examples
             Thread.Sleep(5);
 
             Task.WaitAll(taskList.ToArray());
+
             sw.Stop();
 
-            Console.WriteLine("----------------"); // A separator for UI
-
-            RefList.OrderBy(x => x).ToList().ForEach((x) => Console.WriteLine($"{x} was found in the reference list"));
-
-            var elapsedSeconds = sw.ElapsedMilliseconds / 1000;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"All threads finished, {elapsedSeconds} seconds elapsed. A reduction to 1/{60 / elapsedSeconds} of the time.");
+            RunCheck(sw.ElapsedMilliseconds);           
 
             return 0;
         }

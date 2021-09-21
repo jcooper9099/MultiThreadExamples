@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Threading;
-using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Linq;
-/// <summary>
-/// This example is strange. Why does it not write to the screen 60 times? 
-/// </summary>
+using System.Diagnostics;
+using System.Threading;
+
 namespace ThreadingExperiments.Examples
 {
     internal class ThreadPoolExample : Example
@@ -33,15 +29,11 @@ namespace ThreadingExperiments.Examples
 
             WaitHandle.WaitAll(resetEvents.ToArray());
 
-            Console.WriteLine("----------------"); // A separator for UI
+            sw.Stop();
 
-            RefList.OrderBy(x => x).ToList().ForEach((x) => Console.WriteLine($"{x} was found in the reference list"));
+            RunCheck(sw.ElapsedMilliseconds);
 
-            var elapsedSeconds = sw.ElapsedMilliseconds / 1000;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"All threads finished, {elapsedSeconds} seconds elapsed. A reduction to 1/{60/elapsedSeconds} of the time.");
-
-            return 1;
+            return 0;
         }
 
         private void Wait1Second(int x, EventWaitHandle resetEvent)

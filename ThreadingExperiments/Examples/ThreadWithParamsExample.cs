@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace ThreadingExperiments.Examples
 {
@@ -23,7 +21,7 @@ namespace ThreadingExperiments.Examples
             for (var i = 0; i < 60; i++)
             {
                 var iCopy = i; //neded so that i is not treaded as a reference object;
-                var threadX = new Thread(() => DoSomethingWithParams($"Hello{iCopy}", iCopy));
+                var threadX = new Thread(() => DoSomethingWithParams($"Hello the int is {iCopy}", iCopy));
                 threadX.Start(); // Start threads here and not wait for join
                 threads.Add(threadX);
             }
@@ -33,15 +31,9 @@ namespace ThreadingExperiments.Examples
                 thread.Join(); //synchronization to wait for all threads. Join outside the for loop for async performance.
             }
 
-            sw.Stop();
+            sw.Stop();           
 
-            Console.WriteLine("----------------"); // A separator for UI
-
-            RefList.OrderBy(x => x).ToList().ForEach((x) => Console.WriteLine($"{x} was found in the reference list"));
-
-            var elapsedSeconds = sw.ElapsedMilliseconds / 1000;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"All threads finished, {elapsedSeconds} seconds elapsed. A reduction to 1/{60 / elapsedSeconds} of the time.");
+            RunCheck(sw.ElapsedMilliseconds);
 
             return 0;
         }
