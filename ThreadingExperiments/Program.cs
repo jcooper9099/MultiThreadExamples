@@ -53,6 +53,12 @@ namespace ThreadingExperiments
                 case 5:
                     new AysncRefExample().Run();
                     break;
+                case 6:
+                    new ThreadWithExceptionHandling().Run();
+                    break;
+                case 7:
+                    new TasksWithExceptions().Run();
+                    break;
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\r\nInvalid  Example selection");
@@ -74,6 +80,8 @@ namespace ThreadingExperiments
             Console.WriteLine("3 - ThreadPool Example");
             Console.WriteLine("4 - Threads with parameters example");
             Console.WriteLine("5 - Async Tasks example");
+            Console.WriteLine("6 - Threads with exception handling");
+            Console.WriteLine("7 - Tasks with exceptions");
             Console.WriteLine(Environment.NewLine);
             Console.WriteLine("Press X to exit this program");
             Console.WriteLine(Environment.NewLine);

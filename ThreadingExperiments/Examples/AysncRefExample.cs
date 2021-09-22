@@ -26,7 +26,7 @@ namespace ThreadingExperiments.Examples
             Task.WaitAll(taskList.ToArray());
 
             sw.Stop();
-          
+
             RunCheck(sw.ElapsedMilliseconds);
 
             return 0;
@@ -34,8 +34,9 @@ namespace ThreadingExperiments.Examples
 
         private async Task<int> AddIntAsync(int x)
         {
-            Console.WriteLine("I'm delaying one second");
+            Console.WriteLine($"I'm delaying one second. And adding {x}");
             RefList.Add(x);
+
             await Task.Delay(1000);
             return x;
         }
